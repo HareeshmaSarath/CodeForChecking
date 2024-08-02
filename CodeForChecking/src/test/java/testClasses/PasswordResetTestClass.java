@@ -13,7 +13,7 @@ public class PasswordResetTestClass extends BaseClass{
 	PasswordResetClass pr;
 	LoginPageClass lp;
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"Group C"})
 	public void verifyIncorrectMailIdSubmitShowsThereIsNoUserWithThisEmail() throws IOException {
 		lp=new LoginPageClass(driver);
 		lp.resetPasswordLinkClick();
@@ -22,7 +22,7 @@ public class PasswordResetTestClass extends BaseClass{
 		Assert.assertTrue(actual_result.contains(pr.readStringData(3, 3)));
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,groups = {"Group C"})
 	public void verifyEmailCannotBeBlankMessageShowsWhenClikngSendButton() throws IOException {
 		lp=new LoginPageClass(driver);
 		lp.resetPasswordLinkClick();
@@ -31,7 +31,7 @@ public class PasswordResetTestClass extends BaseClass{
 		Assert.assertTrue(actual_error_result.contains(pr.readStringData(1, 3)));
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3,groups = {"Group C"})
 	public void verifyEmailIsNotAValidEmailAddress() throws IOException {
 		lp=new LoginPageClass(driver);
 		lp.resetPasswordLinkClick();
@@ -40,7 +40,7 @@ public class PasswordResetTestClass extends BaseClass{
 		Assert.assertEquals(actual_result, pr.readStringData(2, 3));
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4,groups = {"Group B"})
 	public void verifyCancelButtonClickRedirectToLoginPageOrNot() {
 		lp=new LoginPageClass(driver);
 		lp.resetPasswordLinkClick();

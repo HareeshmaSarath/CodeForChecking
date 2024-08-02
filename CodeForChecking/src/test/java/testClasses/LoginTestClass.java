@@ -14,21 +14,21 @@ public class LoginTestClass extends BaseClass {
 	HomePageClass hp;
 	PasswordResetClass pr;
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"Group A"})
 	public void verifyTheExpectedPageIsOpenWhileHittingTheURL() {
 		lp = new LoginPageClass(driver);
 		String actual_result = lp.currentPageURLTextLogin();
 		Assert.assertEquals(actual_result, "Login");
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4,groups = {"Group B"})
 	public void verifyCheckBoxRememberMeIsSelectedOrNot() {
 		lp=new LoginPageClass(driver);
 		boolean actual_result=lp.isCheckBoxRememberMeIsSelected();
 		Assert.assertEquals(actual_result, true);
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,groups = {"Group A"})
 	public void verifySuccessfullLogin() throws IOException {
 		lp=new LoginPageClass(driver);
 		lp.loginToSite(lp.readStringData(1, 0), lp.readStringData(1, 1));
@@ -38,7 +38,7 @@ public class LoginTestClass extends BaseClass {
 		Assert.assertEquals(actual_result, expected_result);
 	}
 	
-	@Test(dataProviderClass = DataProviderClass.class,dataProvider = "unsuccessful",priority = 3)
+	@Test(dataProviderClass = DataProviderClass.class,dataProvider = "unsuccessful",priority = 3,groups = {"Group A"})
 	public void verifyUnsuccessfulLogin(String username,String password) throws IOException {
 		lp=new LoginPageClass(driver);
 		lp.loginToSite(username,password);
@@ -46,7 +46,7 @@ public class LoginTestClass extends BaseClass {
 		Assert.assertEquals(actual_result, lp.readStringData(2, 2));
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 5,groups = {"Group B"})
 	public void verifyTheForgetPasswordResetCliksDirectedToCorrectPageOrNot() {
 		lp=new LoginPageClass(driver);
 		lp.resetPasswordLinkClick();
